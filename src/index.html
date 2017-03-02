@@ -6,20 +6,39 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//bootswatch.com/cerulean/bootstrap.css" rel="stylesheet" title="main">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.css" media="screen">
   <style>
     body {
         padding-top: 50px;
+        margin-top: 50px;
     }
-  </style
-
-
+  </style>
 </head>
 <body>
     <app-root>Loading...</app-root>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://bootswatch.com/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+    $(function($) {
+        $('body').on('click', '.theme-link', function() {
+          var theme_name = $(this).attr('rel');
+          var theme = "//bootswatch.com/" + theme_name + "/bootstrap.min.css";
+          set_theme(theme);
+        });
+    });
 
+    function set_theme(theme) {
+        $('link[title="main"]').attr('href', theme);
+        localStorage.theme = theme;
+    }
+
+    $( document ).ready(function() {
+        var theme = localStorage.theme;
+        if (theme) {
+          set_theme(theme);
+    }});
+    </script>   
 </body>
 </html>

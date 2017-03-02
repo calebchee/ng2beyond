@@ -7,17 +7,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Ng2beyond</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+
+          <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Themes <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" rel="cerulean" class="theme-link">Cerulean</a></li>
+                <li><a href="#" rel="darkly" class="theme-link">Darkly</a></li>
+                <li><a href="#" rel="flatly" class="theme-link">Flatly</a></li>
+                <li><a href="#" rel="simplex" class="theme-link">Simplex</a></li>
+                <li><a href="#" rel="yeti" class="theme-link">Yeti</a></li>
+              </ul>
+            </li>
             <li><a *ngIf="auth.loggedIn()" [routerLink]="['/login']">Logout</a></li>
             <li><a *ngIf="!auth.loggedIn()" routerLink="register">Sign Up</a></li>
             <li><a *ngIf="!auth.loggedIn()" routerLink="login">Login</a></li> 
-          </ul>
+            </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search....">
           </form>
+          
         </div>
     </div>
 </nav>         
