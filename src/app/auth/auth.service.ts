@@ -38,7 +38,7 @@ export class AuthService {
         data.append('username', username);
         data.append('password', password);
 
-        return this.http.post('http://localhost:3000/api/authenticate', data)
+        return this.http.post('http://ng2nodejs.azurewebsites.net/api/authenticate', data)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -46,6 +46,7 @@ export class AuthService {
                     // set token property
                     this.token = token;
                     localStorage.setItem('id_token', token);
+                    localStorage.setItem('username', username);
 
                     // return true to indicate successful login
                     return true;
@@ -58,8 +59,7 @@ export class AuthService {
 
     logout(): void {
         // clear token remove user from local storage to log user out
-        this.token = null;
-        localStorage.removeItem('id_token');
+        localStorage.clear();
     }
 
     loggedIn(): boolean {
